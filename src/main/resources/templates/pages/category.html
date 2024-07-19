@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html th:replace="~{layout/masterLayout :: layout(~{::main})}" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main">
+    <div th:replace="~{fragments/categoryHead :: chead}"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Category</h4>
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Title</th>
+                            <th>DatePosted</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="cat : ${categories}">
+                            <td th:text="${cat.id}"></td>
+                            <td th:text="${cat.title}"></td>
+                            <td th:text="${cat.datePosted}"></td>
+                            <td>
+                                <a class="btn btn-outline-success"
+                                th:href="@{'/update-category?id='+${cat.id}}">Update</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</main>
+</body>
+</html>
